@@ -48,7 +48,7 @@ namespace Confluent.SchemaRegistry.Serdes
     /// </remarks>
     public class JsonDeserializer<T> : IAsyncDeserializer<T> where T : class
     {
-        private readonly int headerSize =  sizeof(int) + sizeof(byte);
+        private readonly int headerSize = 0;// sizeof(int) + sizeof(byte);
         
         private readonly JsonSchemaGeneratorSettings jsonSchemaGeneratorSettings;
 
@@ -99,15 +99,15 @@ namespace Confluent.SchemaRegistry.Serdes
             {
                 var array = data.ToArray();
 
-                if (array.Length < 5)
-                {
-                    throw new InvalidDataException($"Expecting data framing of length 5 bytes or more but total data size is {array.Length} bytes");
-                }
+                //if (array.Length < 5)
+                //{
+                //    throw new InvalidDataException($"Expecting data framing of length 5 bytes or more but total data size is {array.Length} bytes");
+                //}
 
-                if (array[0] != Constants.MagicByte)
-                {
-                    throw new InvalidDataException($"Expecting message {context.Component.ToString()} with Confluent Schema Registry framing. Magic byte was {array[0]}, expecting {Constants.MagicByte}");
-                }
+                //if (array[0] != Constants.MagicByte)
+                //{
+                //    throw new InvalidDataException($"Expecting message {context.Component.ToString()} with Confluent Schema Registry framing. Magic byte was {array[0]}, expecting {Constants.MagicByte}");
+                //}
 
                 // A schema is not required to deserialize json messages.
                 // TODO: add validation capability.

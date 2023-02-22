@@ -211,8 +211,8 @@ namespace Confluent.SchemaRegistry.Serdes
                 using (var stream = new MemoryStream(initialBufferSize))
                 using (var writer = new BinaryWriter(stream))
                 {
-                    stream.WriteByte(Constants.MagicByte);
-                    writer.Write(IPAddress.HostToNetworkOrder(schemaId.Value));
+                    //stream.WriteByte(Constants.MagicByte);
+                    //writer.Write(IPAddress.HostToNetworkOrder(schemaId.Value));
                     writer.Write(System.Text.Encoding.UTF8.GetBytes(serializedString));
                     return stream.ToArray();
                 }
